@@ -1,0 +1,11 @@
+Maximum size of packets which give a response for each domain name as follows:
+
+google.com: 68 bytes
+facebook.com: 1464 bytes
+iitd.ac.in: 14700 bytes (with very high packet loss)
+
+Internal maximum size possible:
+
+When I attempt to send a packet of size 100000, ping throws an error and tells me that I can send at most 65507 bytes. I suspect that this is because the maximum size of an IPv4 packet is 65535 and 28 bytes go into the header of the packet.
+
+There is no such warning with IPv6 (which fails to elicit a response from the server but still sends something), so I did a binary search on the largest size that I can send without an error message, and it turns out to be 65527 bytes (the error thrown in that case was sendmsg: Message too long)

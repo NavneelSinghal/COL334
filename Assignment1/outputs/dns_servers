@@ -1,0 +1,156 @@
+Server list:
+
+USA:
+8.20.247.10
+
+UK:
+109.228.8.250
+
+New Zealand:
+122.56.105.82
+
+Venezuela:
+190.8.168.1
+
+Russia:
+81.211.94.74
+
+Google (India)
+
+$ nslookup www.google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 172.217.167.196
+Name:	www.google.com
+Address: 2404:6800:4002:80d::2004
+
+Google (USA)
+
+$ nslookup www.google.com 8.20.247.10
+Server:		8.20.247.10
+Address:	8.20.247.10#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 216.58.203.228
+Name:	www.google.com
+Address: 2404:6800:4003:802::2004
+
+Google (UK)
+
+$ nslookup www.google.com 109.228.8.250
+Server:		109.228.8.250
+Address:	109.228.8.250#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 216.58.210.196
+Name:	www.google.com
+Address: 2a00:1450:4009:81a::2004
+
+Google (New Zealand)
+
+$ nslookup www.google.com 122.56.105.82
+Server:		122.56.105.82
+Address:	122.56.105.82#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 142.250.71.68
+Name:	www.google.com
+Address: 2404:6800:4006:812::2004
+
+Google (Venezuela)
+
+$ nslookup www.google.com 190.8.168.1
+Server:		190.8.168.1
+Address:	190.8.168.1#53
+
+Non-authoritative answer:
+Name:	www.google.com
+Address: 172.217.1.100
+Name:	www.google.com
+Address: 2607:f8b0:4008:810::2004
+
+Google (Russia)
+
+$ nslookup www.google.com 81.211.94.74
+;; connection timed out; no servers could be reached
+
+Facebook (India)
+
+$ nslookup www.facebook.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+www.facebook.com	canonical name = star-mini.c10r.facebook.com.
+Name:	star-mini.c10r.facebook.com
+Address: 69.171.250.35
+Name:	star-mini.c10r.facebook.com
+Address: 2a03:2880:f1ff:83:face:b00c:0:25de
+
+Facebook (USA)
+
+$ nslookup www.facebook.com 8.20.247.10
+Server:		8.20.247.10
+Address:	8.20.247.10#53
+
+Non-authoritative answer:
+www.facebook.com	canonical name = star-mini.c10r.facebook.com.
+Name:	star-mini.c10r.facebook.com
+Address: 157.240.195.35
+Name:	star-mini.c10r.facebook.com
+Address: 2a03:2880:f142:82:face:b00c:0:25de
+
+Facebook (UK)
+
+$ nslookup facebook.com 109.228.8.250
+Server:		109.228.8.250
+Address:	109.228.8.250#53
+
+Non-authoritative answer:
+Name:	facebook.com
+Address: 157.240.221.35
+Name:	facebook.com
+Address: 2a03:2880:f158:82:face:b00c:0:25de
+
+Facebook (New Zealand)
+
+$ nslookup facebook.com 122.56.105.82
+Server:		122.56.105.82
+Address:	122.56.105.82#53
+
+Non-authoritative answer:
+Name:	facebook.com
+Address: 157.240.8.35
+Name:	facebook.com
+Address: 2a03:2880:f119:8083:face:b00c:0:25de
+
+Facebook (Venezuela)
+
+$ nslookup facebook.com 190.8.168.1
+Server:		190.8.168.1
+Address:	190.8.168.1#53
+
+Non-authoritative answer:
+Name:	facebook.com
+Address: 157.240.14.35
+Name:	facebook.com
+Address: 2a03:2880:f12c:183:face:b00c:0:25de
+
+Facebook (Russia)
+
+$ nslookup facebook.com 81.211.94.74
+Server:		81.211.94.74
+Address:	81.211.94.74#53
+
+Non-authoritative answer:
+Name:	facebook.com
+Address: 31.13.72.36
+Name:	facebook.com
+Address: 2a03:2880:f10a:83:face:b00c:0:25de
+

@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{minted}
+\usepackage{listings}
+\lstset{
+    basicstyle=\small\color{purple}\ttfamily,
+    columns=flexible,
+    breaklines=true,
+}
+\setlength\parindent{0pt}
+
+\title{\textbf{Computer Networks Assignment 2}}
+\author{\textsc{Navneel Singhal}}
+
+\newcommand{\nl}{\vspace{0.2cm}\\}
+\newcommand{\nln}{\vspace{0.2cm}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Part 1}
+
+\textbf{Problem:} Use wireshark to grab all packets on your wireless interface, while visiting the website \\\texttt{http://www.cse.iitd.ac.in} from your browser. Do an \texttt{ipconfig /flushdns}\footnote{For Ubuntu, I did \texttt{sudo systemd-resolve --flush-caches}} before you do this activity to clear your local DNS cache. And also clear your browser cache. Report the following:
+
+\begin{enumerate}
+    \item Apply a ``dns" filter on the packet trace, and see if you can find DNS queries and responses for \\\texttt{www.cse.iitd.ac.in}. What DNS server was used? How long did it take for the DNS request-response to complete? \nl
+        Yes, I can find one query and one response for the website. It seems as if my router itself was behaving like the DNS server, since the destination in the query and the source in the response was the IP address of my router, 192.168.1.1. It took 351ms to carry out the DNS query.
+
+    \item Apply an ``http" filter on the packet trace and report the approximate number of HTTP requests that were generated to download all the objects on the home-page. What can you tell from this observation about how web-pages are structured, and how browsers render complex pages with multiple images and files?\nl
+        There were 82 HTTP packets in total, with 41 requests from my IP (192.168.1.204) to the IP of the web-server (103.27.9.152) and 41 packets sent in the other direction. From the number of packets, we get to know that web-pages are split into multiple components like html content, css content, js scripts, images, and other media. From the packets received, we can see that webpages are in the form of HTML and CSS files, with embedded JS. From here it seems that the browser starts processing
+        the main HTML file, and then for each piece of content (multimedia or script), it sends out an HTML request to procure that file from the web server and so on (while recursively parsing the webpage and also sending out HTML requests when certain actions get triggered in the scripts).
+
+    \item Apply a filter such as \texttt{((ip.src==192.168.1.3 \&\& ip.dst==10.7.174.111) || (ip.src==10.7.174.111 \&\& ip.dst==192.168.1.3)) \&\& tcp}. As would be self-explanatory, this will filter for TCP packets moving between your browser and the web-server. Recall that the source and destination IP addresses are a part of the network layer header, which is also called the IP layer since IP (Internet Protocol) is the most common network layer protocol in use. Find the number of TCP
+        connections that were opened between your browser and the web-server. Recall that a TCP connection is identified by the 4-tuple (source IP, destination IP, source port, destination port).\nl
+        The number of TCP connections opened between the browser and the web-server was 23, as was found by the following three methods after filtering by \texttt{((ip.src == 192.168.1.204 \&\& ip.dst == 103.27.9.152) || (ip.dst == 192.168.1.204 \&\& ip.src == 103.27.9.152)) \&\& tcp}:
+        \begin{enumerate}
+            \item Finding the number of distinct 4-tuples as mentioned above.
+            \item (Cross-verification) Finding the number of appearances of \texttt{[SYN, ACK]}, since any \texttt{[SYN, ACK]} happens only at the start of a TCP connection.
+            \item (Cross-verification) Going to the \texttt{Statistics} menu $\to$ \texttt{Conversations} and going to the \texttt{TCP} tab and checking the \texttt{Limit to display filter}.
+        \end{enumerate}
+    \item In the previous part, do you find that several content objects are fetched over the same TCP connection?\nl
+
+        %TODO
+
+
+    \item Notice that before an HTTP message is sent on a new TCP connection, a 3-way handshake is first performed to establish the TCP connection. The client sends a SYN message to the server, the server replies with a SYN-ACK message, and the client then sends an ACK. You will find that several TCP connections were opened between your browser and the web-server. How much time does it take for this handshake, before the connection can be used to send/receive data? Given this latency, what kind
+        of optimizations do you think the browser might want to follow to minimize the overall page-load time?\nl
+
+        %TODO
+
+
+    \item Report the total time taken for download of the entire webpage measured as the time at which the first DNS request was sent and the time when the last content object was received. This is called the page load time. Another useful metric that browsers try to optimize is called the above fold time, which is the time taken to first download objects that are sufficient to render the part of the web-page that’s visible on the screen, i.e. above the fold.\nl
+
+        %TODO
+
+
+    \item Try doing a trace for \texttt{http://www.indianexpress.com} and filter for ``http". What do you find, is there any HTTP traffic? Browse through the entire trace without any filters, are you able to see the contents of any HTML and Javascript files being transferred? Why is that, while you were able to do it easily earlier for \texttt{http://www.cse.iitd.ac.in}?\nl
+
+        %TODO
+
+
+\end{enumerate}
+
+\end{document}
